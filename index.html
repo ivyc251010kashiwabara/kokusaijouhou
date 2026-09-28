@@ -2,69 +2,98 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>マイPWAプロトタイプ</title>
-  
-  <!-- PWA設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>PWA Tetris Game</title>
+
+  <!-- PWA & Web App Manifest -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4a90e2">
-  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <link rel="apple-touch-icon" href="images/hero-sample.png">
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS読み込み -->
+  <!-- Style CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- ヘッダー -->
   <header class="app-header">
-    <h1><i class="fa-solid fa-mobile-screen-button"></i> PWA App</h1>
+    <h1><i class="fa-solid fa-gamepad"></i> PWA TETRIS</h1>
   </header>
 
   <!-- メインコンテンツ -->
   <main class="app-main">
-    
-    <!-- メイン画像エリア (画像差し替え用) -->
-    <section class="image-card">
-      <div class="image-wrapper">
-        <!-- デザインチームから画像が届いたら src を差し替えます -->
-        <img src="images/hero-sample.png" alt="メインビジュアル" id="mainHeroImg" class="replaceable-img">
+    <section class="card">
+      <div class="img-container">
+        <!-- デザイン画像差し替え用の要素 -->
+        <img src="images/hero-sample.png" alt="ヒーローイメージ" class="replaceable-img" onerror="this.src='https://via.placeholder.com/600x300?text=Tetris+Game';">
       </div>
-      <p class="image-caption">サンプル画像（`images/hero-sample.png`）</p>
-    </section>
+      <div class="card-content">
+        <!-- ゲーム情報ディスプレイ -->
+        <div class="game-status">
+          <div class="status-box">
+            <span class="status-label">SCORE</span>
+            <span id="score" class="status-value">0</span>
+          </div>
+          <div class="status-box">
+            <span class="status-label">LINES</span>
+            <span id="lines" class="status-value">0</span>
+          </div>
+        </div>
 
-    <!-- 機能テストエリア -->
-    <section class="content-card">
-      <h2><i class="fa-solid fa-rocket"></i> プロトタイプへようこそ</h2>
-      <p>このアプリはPWAに対応しています。スマホのブラウザメニューから「ホーム画面に追加」を行うことでアプリとして利用できます。</p>
-      
-      <button id="actionBtn" class="primary-btn">
-        <i class="fa-solid fa-hand-pointer"></i> タップしてみる
-      </button>
-      <p id="statusText" class="status-message"></p>
-    </section>
+        <!-- テトリスキャンバス -->
+        <div class="canvas-container">
+          <canvas id="tetris" width="240" height="400"></canvas>
+          <div id="game-over-overlay" class="overlay hidden">
+            <p class="overlay-text">GAME OVER</p>
+            <button id="restart-btn" class="btn">
+              <i class="fa-solid fa-rotate-right"></i> もう一度プレイ
+            </button>
+          </div>
+        </div>
 
+        <!-- スタート / 一時停止ボタン -->
+        <button id="start-btn" class="btn">
+          <i class="fa-solid fa-play"></i> ゲームスタート
+        </button>
+
+        <!-- スマホ用タッチコントローラー -->
+        <div class="touch-controls">
+          <div class="control-row">
+            <button id="btn-rotate" class="ctrl-btn"><i class="fa-solid fa-rotate"></i> 回転</button>
+          </div>
+          <div class="control-row">
+            <button id="btn-left" class="ctrl-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <button id="btn-down" class="ctrl-btn"><i class="fa-solid fa-arrow-down"></i></button>
+            <button id="btn-right" class="ctrl-btn"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+          <div class="control-row">
+            <button id="btn-drop" class="ctrl-btn ctrl-btn-wide"><i class="fa-solid fa-angles-down"></i> 一気に落とす</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ボトムナビゲーション (スマホ向け) -->
+  <!-- フッターナビゲーション -->
   <nav class="bottom-nav">
     <a href="#" class="nav-item active">
-      <i class="fa-solid fa-house"></i>
-      <span>ホーム</span>
+      <i class="fa-solid fa-gamepad"></i>
+      <span>ゲーム</span>
     </a>
     <a href="#" class="nav-item">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <span>検索</span>
+      <i class="fa-solid fa-trophy"></i>
+      <span>スコア</span>
     </a>
     <a href="#" class="nav-item">
-      <i class="fa-solid fa-user"></i>
-      <span>マイページ</span>
+      <i class="fa-solid fa-gear"></i>
+      <span>設定</span>
     </a>
   </nav>
 
-  <!-- JavaScript読み込み -->
+  <!-- JS Logic -->
   <script src="app.js"></script>
 </body>
 </html>

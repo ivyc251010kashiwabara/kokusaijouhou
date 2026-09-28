@@ -1,0 +1,20 @@
+{
+  "name": "PWA Tetris Game",
+  "short_name": "Tetris",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#4a90e2",
+  "icons": [
+    {
+      "src": "images/hero-sample.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/hero-sample.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
