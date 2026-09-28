@@ -1,0 +1,159 @@
+/* 全体初期化 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333333;
+  padding-bottom: 70px; /* ボトムナビゲーション用の余白 */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ヘッダー */
+.app-header {
+  background-color: #4a90e2;
+  color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* メインコンテンツ */
+.app-main {
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 画像カード・エリア設定 */
+.image-card, .content-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 縦横比を固定 */
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 差し替え用画像の共通スタイル */
+.replaceable-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 枠いっぱいに綺麗に収める */
+  display: block;
+}
+
+.image-caption {
+  font-size: 0.8rem;
+  color: #777777;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ボタン設定 */
+.content-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a90e2;
+}
+
+.content-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.primary-btn:active {
+  background-color: #357abd;
+}
+
+.status-message {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #2e7d32;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ボトムナビゲーション */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  z-index: 100;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #888888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  gap: 4px;
+}
+
+.nav-item i {
+  font-size: 1.2rem;
+}
+
+.nav-item.active {
+  color: #4a90e2;
+}
